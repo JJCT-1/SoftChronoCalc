@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftChronoCalc</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Enlace del CDN para utilizar "font-awesome" -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" class="icono">
+                <img src="/assets/icono.jpg" alt="">
+                <span class="nav-item">SoftChronoCalc</span>
+                </a></li>
+            <li><a href="#">
+                <i class="fas fa-home"></i>
+                <span class="nav-item"></span>Inicio
+                </a></li>
+            <li><a href="#">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item"></span>COCOMO 81 Intermedio
+                </a></li>
+            <li><a href="#">
+                <i class="fas fa-solid fa-magnifying-glass-chart"></i>
+                <span class="nav-item"></span>COCOMO II P.A.
+                </a></li>
+            <li><a href="#">
+                <i class="fas fa-solid fa-arrows-to-dot"></i>
+                <span class="nav-item"></span>Puntos de Casos de Uso
+                </a></li>
+            <li><a href="#" class="ayuda">
+                <i class="fas fa-regular fa-circle-question"></i>
+                <span class="nav-item"></span>Ayuda
+                </a></li>
+            
+        </ul>
+    </nav>
+    <main>
+        <section class="configuracion">
+            <h2>COCOMO 81 - Intermedio:</h2>
+            <div class="configuracion-inicial">
+                <h3>Configuracion Inicial:</h3>
+                <div class="configuracion-form">
+                    <label for="modo">Modo:</label>
+                    <select id="modo"  oninput="actualizarCalculos()">
+                        <option value="1">Orgánico</option>
+                        <option value="2">Semidestinado</option>
+                        <option value="3">Embebido</option>
+                    </select>
+                    <label for="lineas-codigo">Líneas de Código:</label>
+                    <input type="number" id="lineas-codigo" value="0" min="0" step="0.01" oninput="actualizarCalculos()"/>
+                    <label for="puntos-funcion">Puntos de Función:</label>
+                    <input type="number" id="puntos-funcion" value="0" min="0" step="0.001" oninput="actualizarCalculos()"/>
+                    <label for="factor-conversion">Factor de Conversión:</label>
+                    <input type="number" id="factor-conversion" value="0" min="0" step="0.001" oninput="actualizarCalculos()"/>
+                    <label for="lineas-codigo-equivalente">Líneas de Código (equivalente):</label>
+                    <input type="number" id="lineas-codigo-equivalente" value="0" min="0" step="0.001" oninput="actualizarCalculos()"/>
+                </div>
+                <div class="botones">
+                    <button id="ecuaciones">Ecuaciones</button>
+                    <button id="reiniciar">Reiniciar</button>
+                    <button id="alternar">Alternar</button>
+                </div>
+                <dialog id="modal">
+                    <h2>Formulario de Ecuaciones de SoftChronoCalc</h2>
+                    <img src="/assets/ecuaciones.png" alt="" class="resize-image">
+                    <button id="btn-cerrar-modal"> Volver</button>
+                </dialog>
+
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Etapas</th>
+                        <th>Costos (Soles)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Etapa 1</td>
+                        <td><input type="number" id="cost-input1" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                    </tr>
+                    <tr>
+                        <td>Etapa 2</td>
+                        <td><input type="number" id="cost-input2" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                    </tr>
+                    <tr>
+                        <td>Etapa 3</td>
+                        <td><input type="number" id="cost-input3" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                    </tr>
+                    <tr>
+                        <td>Etapa 4</td>
+                        <td><input type="number" id="cost-input4" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                    </tr>
+                    <tr>
+                        <td>Etapa 5</td>
+                        <td><input type="number" id="cost-input5" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                    </tr>
+                    <tr>
+                        <td>Etapa 6</td>
+                        <td><input type="number" id="cost-input6" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="part2">
+            <div class="conductores-costes">
+                <h3>Conductores de Costes:</h3>
+                <div class="costes">
+                    <div class="coste">
+                        <h4>Producto:</h4>
+                        <div class="coste-item">
+                            <label for="rss">RSS:</label>
+                            <select id="rss" oninput="actualizarCalculos()">
+                                <option value="0.75">Muy Bajo</option>
+                                <option value="0.88">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.15">Alto</option>
+                                <option value="1.40">Muy Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="tbd">TBD:</label>
+                            <select id="tbd" oninput="actualizarCalculos()">
+                                <option value="0.94">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.08">Alto</option>
+                                <option value="1.16">Muy Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="cpr">CPR:</label>
+                            <select id="cpr" oninput="actualizarCalculos()">
+                                <option value="0.70">Muy Bajo</option>
+                                <option value="0.85">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.15">Alto</option>
+                                <option value="1.30">Muy Alto</option>
+                                <option value="1.65">Extra Alto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="coste">
+                        <h4>Plataforma:</h4>
+                        <div class="coste-item">
+                            <label for="rte">RTE:</label>
+                            <select id="rte" oninput="actualizarCalculos()">
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.11">Alto</option>
+                                <option value="1.30">Muy Alto</option>
+                                <option value="1.66">Extra Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="rmp">RMP:</label>
+                            <select id="rmp" oninput="actualizarCalculos()">
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.06">Alto</option>
+                                <option value="1.30">Muy Alto</option>
+                                <option value="1.58">Extra Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="vmc">VMC:</label>
+                            <select id="vmc" oninput="actualizarCalculos()">
+                                <option value="0.87">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.15">Alto</option>
+                                <option value="1.30">Muy Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="trc">TRC:</label>
+                            <select id="trc" oninput="actualizarCalculos()">
+                                <option value="0.87">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.07">Alto</option>
+                                <option value="1.15">Muy Alto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="coste">
+                        <h4>Personal:</h4>
+                        <div class="coste-item">
+                            <label for="can">CAN:</label>
+                            <select id="can" oninput="actualizarCalculos()">
+                                <option value="1.46">Muy Bajo</option>
+                                <option value="1.19">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="0.86">Alto</option>
+                                <option value="0.71">Muy Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="ean">EAN:</label>
+                            <select id="ean" oninput="actualizarCalculos()">
+                                <option value="1.29">Muy Bajo</option>
+                                <option value="1.13">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="0.91">Alto</option>
+                                <option value="0.82">Muy Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="cpro">CPRO:</label>
+                            <select id="cpro" oninput="actualizarCalculos()">
+                                <option value="1.42">Muy Bajo</option>
+                                <option value="1.17">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="0.86">Alto</option>
+                                <option value="0.70">Muy Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="eso">ESO:</label>
+                            <select id="eso" oninput="actualizarCalculos()">
+                                <option value="1.21">Muy Bajo</option>
+                                <option value="1.12">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="0.96">Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="elp">ELP:</label>
+                            <select id="elp" oninput="actualizarCalculos()">
+                                <option value="1.14">Muy Bajo</option>
+                                <option value="1.10">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="0.95">Alto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="coste">
+                        <h4>Proyecto:</h4>
+                        <div class="coste-item">
+                            <label for="utp">UTP:</label>
+                            <select id="utp" oninput="actualizarCalculos()">
+                                <option value="1.24">Muy Bajo</option>
+                                <option value="1.10">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="0.91">Alto</option>
+                                <option value="0.82">Muy Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="uhs">UHS:</label>
+                            <select id="uhs" oninput="actualizarCalculos()">
+                                <option value="1.24">Muy Bajo</option>
+                                <option value="1.10">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="0.91">Alto</option>
+                                <option value="0.83">Muy Alto</option>
+                                <option value="0.70">Extra Alto</option>
+                            </select>
+                        </div>
+                        <div class="coste-item">
+                            <label for="rpl">RPL:</label>
+                            <select id="rpl" oninput="actualizarCalculos()">
+                                <option value="1.23">Muy Bajo</option>
+                                <option value="1.08">Bajo</option>
+                                <option value="1" selected>Nominal</option>
+                                <option value="1.04">Alto</option>
+                                <option value="1.10">Muy Alto</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="resultados">
+                <h3>Resultados:</h3>
+
+                <div class="resul-1">
+                    <label for="esfuerzo">Esfuerzo (personas-mes):</label>
+                    <input type="number" id="esfuerzo" value="0" min="0" step="0.0001" oninput="actualizarCalculos()"/>
+                    <label for="tiempo-dev">Tiempo de desarrollo (meses):</label>
+                    <input type="number" id="tiempo-dev" value="0" min="0" step="0.0001" oninput="actualizarCalculos()"/>
+                </div>
+                <div class="result-2">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Etapas</th>
+                                <th>Costos Finales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Etapa 1</td>
+                                <td><input type="number" id="f-costo1" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 2</td>
+                                <td><input type="number" id="f-costo2" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 3</td>
+                                <td><input type="number" id="f-costo3" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 4</td>
+                                <td><input type="number" id="f-costo4" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 5</td>
+                                <td><input type="number" id="f-costo5" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 6</td>
+                                <td><input type="number" id="f-costo6" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Total:</td>
+                                <td><input type="number" id="f-costoT" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
