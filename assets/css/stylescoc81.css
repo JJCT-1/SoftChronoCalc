@@ -1,0 +1,406 @@
+/* styles.css */
+
+/* Llamado a fuente de letra para la pagina*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* 
++++++++++++++++++++++++++++++
+P1: Configuracion inicial de la barra lateral 
+de navegacion, la cual es la principal del sistema
++++++++++++++++++++++++++++++
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #444;
+    color: white;
+    padding: 1px;
+    text-align: center;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background: #fff;
+    max-width: 500px; /* Máximo ancho permitido */
+    width: 80px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.icono{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 10px 0 0 10px;
+}
+
+.icono img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.icono span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+a{
+    position: relative;
+    color: #555;
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+    display: flex; /* Alinea el icono y el texto en una fila */
+    align-items: center; /* Centra verticalmente el icono y el texto */
+}
+
+.fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px; /* Ajusta el espacio entre el icono y el texto */
+    display: inline-block; /* Asegura que el span se comporte correctamente en línea */
+    overflow: hidden; /* Oculta el desbordamiento si el texto es demasiado largo */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+    white-space: nowrap; /* Mantiene el texto en una sola línea */
+}
+
+a:hover{
+    background: #eee;
+}
+
+nav:hover{
+    width: 280px;
+    transition: all 0.5s ease;
+}
+
+li {
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+i {
+    margin-right: 5px; /* Ajusta el espacio entre el icono y el texto */
+}
+
+.ayuda{
+    position: absolute;
+    bottom: 0;
+}
+
+/* 
++++++++++++++++++++++++++++++
+P1: Fin de P1
++++++++++++++++++++++++++++++
+*/
+
+main {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre las secciones */
+    align-items: stretch; /* Estira las secciones para que ocupen toda la altura */
+    width: 100%;
+    gap: 5px; /* Espacio entre las secciones */
+    padding-left: 100px;
+    padding-top: 10px;
+}
+
+.configuracion {
+    background-color: white;
+    flex: 1; /* Ocupa espacio proporcional dentro del contenedor */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+}
+
+.part2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    flex: 2; /* Ocupa espacio proporcional dentro del contenedor */
+    background-color: white;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+}
+
+.conductores-costes {
+    flex: 2; /* Ocupa 2 partes de la altura */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.resultados {
+    flex: 1; /* Ocupa 1 parte de la altura */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.resultados .resul-1 {
+    font-size: 14px;
+}
+
+.resultados .resul-1 input[type="number"] {
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.configuracion h2, .configuracion h3, .resultados h3 {
+    text-align: center;
+}
+
+.botones, .conductores-costes {
+    margin-top: 20px;
+}
+
+.configuracion-form {
+    display: grid;
+    grid-template-columns: 150px 1fr; /* Primera columna fija para los labels, segunda columna flexible */
+    gap: 10px 20px; /* Espacio entre filas y columnas */
+    align-items: center; /* Alinea verticalmente al centro */
+}
+
+.configuracion-form label {
+    display: block; /* Asegura que cada label ocupe su propia línea */
+    max-width: 150px; /* Ancho máximo del label */
+    white-space: normal; /* Permite el quiebre de línea */
+    word-break: break-word; /* Permite romper palabras largas si es necesario */
+    overflow-wrap: break-word; /* Rompe las palabras largas para ajustarse al contenedor */
+    font-size: 16px; /* Tamaño del texto */
+}
+
+.configuracion-form select,
+.configuracion-form input {
+    width: 100%; /* Asegura que el input/select ocupen toda la segunda columna */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.botones {
+    text-align: center;
+}
+
+.botones button {
+    padding: 10px 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#ecuaciones {
+    background-color: blue;
+    color: white;
+}
+
+#alternar {
+    background-color: green;
+    color: white;
+}
+
+#calpuntfunc{
+    background-color: orange;
+    color: white;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#fact-conversion {
+    background-color: red;
+    color: white;
+}
+
+.conductores-costes .costes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.conductores-costes .coste {
+    flex: 1;
+    margin: 0 10px;
+    flex-direction: column; /* Alinea las filas verticalmente */
+    gap: 10px; /* Espacio entre filas */
+}
+
+.conductores-costes .coste label, select{
+    font-size: 13px;
+    display: flex;
+    margin: 5px 0;
+}
+
+.coste-item {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos dentro de la fila */
+    gap: 10px; /* Espacio entre label y select */
+}
+
+
+/* Configuracion de tablas */
+
+.resultados table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.resultados th, .resultados td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.resultados td input {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.resultados thead {
+    background-color: #f4f4f4;
+}
+
+.configuracion table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.configuracion th, .configuracion td{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.configuracion td input {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.configuracion thead {
+    background-color: #f4f4f4;
+}
+
+.configuracion td{
+    font-size: 12px;
+}
+
+
+/* Estilos para el input habilitado */
+.configuracion .configuracion-form input:enabled {
+    background-color: #fff; /* Fondo blanco */
+    color: #000; /* Texto negro */
+    border: 1px solid #000; /* Borde negro */
+}
+
+/* Estilos para el input deshabilitado */
+.configuracion .configuracion-form input:disabled {
+    background-color: #f0f0f0; /* Fondo gris claro */
+    color: #aaa; /* Texto gris */
+    border: 1px solid #ccc; /* Borde gris */
+}
+
+#modal {
+    position: fixed; /* Asegura que el modal esté fijo en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el modal horizontal y verticalmente */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade sombra para destacar el modal */
+}
+
+
+#modal::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
+
+.resize-image {
+    width: 100%; /* Ajusta la imagen al 100% del ancho del contenedor */
+    max-width: 1000px; /* Establece un ancho máximo para la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+
+
+#modal-pfsa {
+    position: fixed; /* Asegura que el modal esté fijo en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el modal horizontal y verticalmente */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade sombra para destacar el modal */
+}
+
+
+#modal-pfsa::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
+
+
+#modal-lcd-pf {
+    position: fixed; /* Asegura que el modal esté fijo en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el modal horizontal y verticalmente */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade sombra para destacar el modal */
+}
+
+
+#modal-lcd-pf::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
