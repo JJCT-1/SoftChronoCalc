@@ -26,7 +26,6 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
-    text-align: justify;
 }
 
 header {
@@ -152,7 +151,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    flex: 1; /* Ocupa espacio proporcional dentro del contenedor */
+    flex: 2; /* Ocupa espacio proporcional dentro del contenedor */
     background-color: white;
     padding: 20px;
     padding-top: 10px;
@@ -169,6 +168,63 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 25px;
 }
+
+
+
+
+
+
+
+
+.conductores-escala {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.escala-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos a los extremos del contenedor */
+    gap: 20px; /* Espacio entre los divs "costes" */
+}
+
+.escalas {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.left {
+    text-align: center; /* Alineación del texto a la izquierda */
+    padding-top: 30px;
+    padding-bottom: 20px;
+    width: 40%;
+}
+
+.right {
+    text-align: right; /* Alineación del texto a la derecha */
+    width: 70%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .resultados {
     flex: 1; /* Ocupa 1 parte de la altura */
@@ -232,43 +288,24 @@ main {
     cursor: pointer;
 }
 
-#ecuaciones {
+#pesosdeactores {
     background-color: blue;
     color: white;
 }
 
-#reiniciar {
-    background-color: orange;
-    color: white;
-}
-
-#alternar {
+#pesosdecasosdeuso {
     background-color: green;
     color: white;
 }
 
-.conductores-costes .costes {
-    display: flex;
-    justify-content: space-between;
+#factorct{
+    background-color: orange;
+    color: white;
 }
 
-.conductores-costes .coste {
-    flex: 1;
-    margin: 0 10px;
-    flex-direction: column; /* Alinea las filas verticalmente */
-    gap: 10px; /* Espacio entre filas */
-}
-
-.conductores-costes .coste label, select{
-    font-size: 13px;
-    display: flex;
-    margin: 5px 0;
-}
-
-.coste-item {
-    display: flex;
-    align-items: center; /* Centra verticalmente los elementos dentro de la fila */
-    gap: 10px; /* Espacio entre label y select */
+#factora {
+    background-color: red;
+    color: white;
 }
 
 
@@ -353,48 +390,87 @@ main {
     background-color: rgba(0, 0, 0, .55);
 }
 
-.img1 {
+.resize-image {
+    width: 100%; /* Ajusta la imagen al 100% del ancho del contenedor */
+    max-width: 1000px; /* Establece un ancho máximo para la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+
+#modal-pa, #modal-pcu, #modal-fct, #modal-fa {
+    position: fixed; /* Asegura que el modal esté fijo en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el modal horizontal y verticalmente */
+    background: white;
+    padding: 20px;
     border-radius: 10px;
-    border: 2px solid #000; /* Borde negro */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade sombra para destacar el modal */
+}
+
+
+#modal-pa::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
+
+#modal-pcu::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
+
+#modal-fct::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
+
+#modal-fa::backdrop {
+    background-color: rgba(0, 0, 0, .55);
 }
 
 
 
-#slider{
-    margin: 0 auto;
-    width: 600px;
-    height: 400px;
-    overflow:hidden;
-    background-color: white;
-}
-/*Valores de las imagenes*/
-#slider img{
-    margin: 0 auto;
-    -moz-transition: opacity 2s;
-    -webkit-transition: opacity 2s;
-    transition: opacity 2s;
-    width: 600px;
-    height: 400px;
-    position: absolute;
-    opacity: 0;
-}
-/*Para que la primera imagen este activa al inicio*/
-#slider img:nth-child(1){
-    opacity: 1;
+
+#modal-lcd-pf {
+    position: fixed; /* Asegura que el modal esté fijo en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el modal horizontal y verticalmente */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade sombra para destacar el modal */
 }
 
-table{
-    margin: 0 auto;
-    width: 800px;
-    height: auto;
-    overflow:hidden;
-    background-color: white;
-    border: 0;
+
+#modal-lcd-pf::backdrop {
+    background-color: rgba(0, 0, 0, .55);
 }
 
-#izquierda{
-    text-align: right;
+.hidden {
+    display: none;
 }
-#derecha{
-    text-align: left;
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido al inicio (izquierda) */
 }
+
+#toggle-button {
+    background-color: #ffffff; /* Gris oscuro */
+    color: #000000; /* Blanco */
+    border: 1px solid #4e4e4e;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#toggle-button:hover {
+    background-color: #7a7a7a; /* Gris más oscuro */
+}
+
+#toggle-button:active {
+    transform: scale(0.98); /* Efecto de presionar */
+}
+

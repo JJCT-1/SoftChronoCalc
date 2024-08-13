@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftChronoCalc</title>
+    <link rel="stylesheet" href="../assets/css/stylespcdu.css">
+    <!-- Enlace del CDN para utilizar "font-awesome" -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html" class="icono">
+                <img src="../assets/images/icono.jpg" alt="">
+                <span class="nav-item">SoftChronoCalc</span>
+                </a></li>
+            <li><a href="../index.html">
+                <i class="fas fa-home"></i>
+                <span class="nav-item"></span>Inicio
+                </a></li>
+            <li><a href="../pages/cocomo81.html">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item"></span>COCOMO 81 Intermedio
+                </a></li>
+            <li><a href="../pages/cocomoII.html">
+                <i class="fas fa-solid fa-magnifying-glass-chart"></i>
+                <span class="nav-item"></span>COCOMO II P.A.
+                </a></li>
+            <li><a href="../pages/puntosCDU.html">
+                <i class="fas fa-solid fa-arrows-to-dot"></i>
+                <span class="nav-item"></span>Puntos de Casos de Uso
+                </a></li>
+            <li><a href="#" class="ayuda">
+                <i class="fas fa-regular fa-circle-question"></i>
+                <span class="nav-item"></span>Ayuda
+                </a></li>
+            
+        </ul>
+    </nav>
+    <main>
+        <section class="configuracion">
+            <h2>Puntos de Caso de Uso:</h2>
+            <div class="configuracion-inicial">
+                <h3>Configuracion Inicial:</h3>
+                <div class="configuracion-form">
+                    <label for="peso-actores">Peso de Actores:</label>
+                    <input type="number" id="peso-actores" value="0" min="0" step="0.01" oninput="calpuntosPA()"/>
+                    <label for="peso-caso-de-uso">Peso de CU:</label>
+                    <input type="number" id="peso-caso-de-uso" value="0" min="0" step="0.01" oninput="calpuntosPCU()"/>
+                    <label for="pcusa">PCUSA:</label>
+                    <input type="number" id="pcusa" value="0" min="0" step="0.01" oninput="calPCUSA()"/>
+                    <label for="fct">FCT:</label>
+                    <input type="number" id="fct" value="0" min="0" step="0.01" oninput="calpuntosFCT()"/>
+                    <label for="fa">FA:</label>
+                    <input type="number" id="fa" value="0" min="0" step="0.01" oninput="calFA()"/>
+                    <label for="pcua">PCUA:</label>
+                    <input type="number" id="pcua" value="0" min="0" step="0.01" oninput="calcularPCUA()"/>
+                </div>
+                <div class="botones">
+                    <button id="pesosdeactores">Pesos de Actores</button>
+                    <button id="pesosdecasosdeuso">Pesos de Casos de Uso</button>
+                    <button id="factorct">Factor de Complejidad Tecnica (FCT)</button>
+                    <button id="factora">Factor de Ambiente (FA)</button>
+                </div>
+                <dialog id="modal-pa">
+                    <h2>Cálculo de los Pesos de los Actores</h2>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Simple</th>
+                            <th>Medio</th>
+                            <th>Complejo</th>
+                        </tr>
+                        <tr>
+                            <td>Actores</td>
+                            <td><input type="number" id="pa1" value="0" min="0" oninput="calpuntosPA()"/></td>
+                            <td><input type="number" id="pa2" value="0" min="0" oninput="calpuntosPA()"/></td>
+                            <td><input type="number" id="pa3" value="0" min="0" oninput="calpuntosPA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td colspan="3"><span id="total">0</span></td>
+                        </tr>
+                    </table>
+                    <button id="btn-cerrar-modal-pa">Volver</button>
+                </dialog>
+
+                <dialog id="modal-pcu">
+                    <h2>Cálculo de los Pesos de los Casos de Uso</h2>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Simple</th>
+                            <th>Medio</th>
+                            <th>Complejo</th>
+                        </tr>
+                        <tr>
+                            <td>Transacciones o Clases</td>
+                            <td><input type="number" id="pcu1" value="0" min="0" oninput="calpuntosPCU()"/></td>
+                            <td><input type="number" id="pcu2" value="0" min="0" oninput="calpuntosPCU()"/></td>
+                            <td><input type="number" id="pcu3" value="0" min="0" oninput="calpuntosPCU()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td colspan="3"><span id="totalpcu">0</span></td>
+                        </tr>
+                    </table>
+                    <button id="btn-cerrar-modal-pcu">Volver</button>
+                </dialog>
+
+                <dialog id="modal-fct">
+                    <h2>Cálculo del Factor de Complejidad Tecnica</h2>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Factor Asignado (0-5)</th>
+                        </tr>
+                        <tr>
+                            <td>Sistema Distribuido</td>
+                            <td><input type="number" id="fct1" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Desempeño</td>
+                            <td><input type="number" id="fct2" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Eficiencia del usuario final (en-linea)</td>
+                            <td><input type="number" id="fct3" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Complejidad del procesamiento interno</td>
+                            <td><input type="number" id="fct4" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Reusabilidad del código</td>
+                            <td><input type="number" id="fct5" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Facilidad de instalación</td>
+                            <td><input type="number" id="fct6" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Facilidad de uso</td>
+                            <td><input type="number" id="fct7" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Portabilidad</td>
+                            <td><input type="number" id="fct8" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Facilidad de cambio</td>
+                            <td><input type="number" id="fct9" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Concurrencia</td>
+                            <td><input type="number" id="fct10" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Características especiales de seguridad</td>
+                            <td><input type="number" id="fct11" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Provee acceso a terceros </td>
+                            <td><input type="number" id="fct12" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Facilidades especiales de entrenamiento a los usuarios</td>
+                            <td><input type="number" id="fct13" value="0" min="0" oninput="calpuntosFCT()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td colspan="3"><span id="totalfct">0</span></td>
+                        </tr>
+                    </table>
+                    <button id="btn-cerrar-modal-fct">Volver</button>
+                </dialog>
+
+                <dialog id="modal-fa">
+                    <h2>Cálculo del Factor de Ambiente</h2>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Factor Asignado (0-5)</th>
+                        </tr>
+                        <tr>
+                            <td>Familiaridad con el Proceso Unificado de Rational </td>
+                            <td><input type="number" id="fa1" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Experiencia en el desarrollo de aplicaciones</td>
+                            <td><input type="number" id="fa2" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Experiencia en Orientación a objetos</td>
+                            <td><input type="number" id="fa3" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Capacidad del jefe del proyecto</td>
+                            <td><input type="number" id="fa4" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Motivación</td>
+                            <td><input type="number" id="fa5" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Estabilidad de los requerimientos</td>
+                            <td><input type="number" id="fa6" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Personal a tiempo parcial</td>
+                            <td><input type="number" id="fa7" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Lenguaje de programación difícil</td>
+                            <td><input type="number" id="fa8" value="0" min="0" oninput="calFA()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td colspan="3"><span id="totalfa">0</span></td>
+                        </tr>
+                    </table>
+                    <button id="btn-cerrar-modal-fa">Volver</button>
+                </dialog>
+            </div>
+        </section>
+
+        <section class="part2">
+            
+            <div class="resultados">
+                <h3>Costo Iniciales del Proyecto por Etapas:</h3>
+                <div class="result-2">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Etapas</th>
+                                <th>Costos (Soles)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Etapa 1</td>
+                                <td><input type="number" id="cost-input1" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 2</td>
+                                <td><input type="number" id="cost-input2" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 3</td>
+                                <td><input type="number" id="cost-input3" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 4</td>
+                                <td><input type="number" id="cost-input4" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 5</td>
+                                <td><input type="number" id="cost-input5" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 6</td>
+                                <td><input type="number" id="cost-input6" value="0" min="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="resultados">
+                <h3>Resultados:</h3>
+
+                <div class="resul-1">
+                    <label for="esfuerzo">Esfuerzo (horas-hombre):</label>
+                    <input type="number" id="esfuerzo" value="0" min="0" step="0.0001" oninput="calcularPCUA()"/>
+                </div>
+                <div class="result-2">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Etapas</th>
+                                <th>Costos Finales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Etapa 1</td>
+                                <td><input type="number" id="f-costo1" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 2</td>
+                                <td><input type="number" id="f-costo2" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 3</td>
+                                <td><input type="number" id="f-costo3" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 4</td>
+                                <td><input type="number" id="f-costo4" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 5</td>
+                                <td><input type="number" id="f-costo5" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Etapa 6</td>
+                                <td><input type="number" id="f-costo6" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                            <tr>
+                                <td>Total:</td>
+                                <td><input type="number" id="f-costoT" value="0" step="0.01" oninput="actualizarCalculos()"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    <script src="../assets/js/scriptpcdu.js"></script>
+</body>
+</html>
