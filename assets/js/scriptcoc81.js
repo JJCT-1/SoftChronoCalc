@@ -1,3 +1,5 @@
+
+
 // Función para elevar un número a un exponente con precisión en decimales
 function elevarConDecimales(base, exponente, decimales = 4) {
     return parseFloat((Math.pow(base, exponente)).toFixed(decimales));
@@ -233,6 +235,150 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
+
+
+
+
+
+const toastDetails = {
+    timer: 5000,
+    rss: {
+        icon: 'fa-circle-info',
+        text: 'Requerimientos de Seguridad del Software(RSS): en el cual se considera el efecto que pudiera proporcionar una falla en el sistema (costo dinero, vidas).',
+    },
+    tbd: {
+        icon: 'fa-circle-info',
+        text: 'Tamaño de la Base de Datos(TBD): Se toma el tamaño de la BDxen Kilobytes (Kb) y se divide entre KLDC estimados en el software.',
+    },
+    cpr: {
+        icon: 'fa-circle-info',
+        text: 'Complejidad del Producto(CPR): La complejidad del producto, subsistemas o tareas a desarrollar dependen del tipo de operaciones de control, aritméticas, de E/S, manejo de la BDxque contenga dicho producto.',
+    },
+    rte: {
+        icon: 'fa-circle-info',
+        text: 'Restricciones de tiempo de Ejecución(RTE): Este punto se refiere a que se debe estimar el tiempo necesario para la ejecución del sistema y calcular el tiempo disponible de computación.',
+    },
+    rmp: {
+        icon: 'fa-circle-info',
+        text: 'Restricciones de Memoria Principal(RMP): Donde se calcula la memoria necesaria para ejecutar el software entre la memoria disponible todo esto en %.',
+    },
+    vmc: {
+        icon: 'fa-circle-info',
+        text: 'Velocidad con que Cambian los Medios de Computo(VMC): Es la frecuencia de cambio del Hardware y del Software necesarios para las tareas de nuestro sistema (aproximadamente 6 meses).',
+    },
+    trc: {
+        icon: 'fa-circle-info',
+        text: 'Tiempo de Respuesta del Computador(TRC): Es el tiempo desde que se entrega por el usuario hasta que se devuelve la respuesta de la tarea.',
+    },
+
+
+    can: {
+        icon: 'fa-circle-info',
+        text: 'Capacidad de los Analistas(CAN):  La capacidad de los analistas se mide en términos de percentiles con respecto a la población de analistas donde se consideran habilidades de analisis, eficiencia, entre otros.',
+    },
+    ean: {
+        icon: 'fa-circle-info',
+        text: 'Experiencia de los Analistas(EAN):  Es el tiempo de trabajo promedio que lleva el grupo de analistas en la actividad de análisis dentro de la rama en que se está haciendo Software.',
+    },
+    cpro: {
+        icon: 'fa-circle-info',
+        text: 'Capacidad de los Programadores(CPRO): Es análogo a la capacidad de los analistas, salvo que la principal es la habilidad para programar en vez de la habilidad para el análisis.',
+    },
+    eso: {
+        icon: 'fa-circle-info',
+        text: 'Experiencia en el Sistema Operativo(ESO): Es el tiempo promedio de experiencia con el S.O. en el cual se desarrollara el software con todo el grupo de analistas y programadores.',
+    },
+    elp: {
+        icon: 'fa-circle-info',
+        text: 'Experiencia en el Lenguaje de Programación(ELP):  Es el tiempo promedio de experiencia en el lenguaje de Programación en el que se desarrolla el Software de los analistas y programadores.',
+    },
+
+
+    utp: {
+        icon: 'fa-circle-info',
+        text: ' Uso de Técnicas Modernas de Programación(UTP): Considera el uso de modernas técnicas de programación como: Orientado a Objetos.',
+    },
+    uhs: {
+        icon: 'fa-circle-info',
+        text: 'Uso de Modernas Herramientas de Software(UHS): Es la cantidad de herramientas que se usan para el desarrollo del Software.',
+    },
+    rpl: {
+        icon: 'fa-circle-info',
+        text: 'Requisitos de Planificación(RPL): Se obtiene dividiendo el TDes Nominal entre el TDes Real para luego multiplicarlo por 100 obteniendo el resultado en %.',
+    },
+
+    headerCostes: {
+        icon: 'fa-circle-info',
+        text: 'Info: Los conductores de coste son los factores multiplicativos que determinan el esfuerzo requerido para terminar un proyecto de  software.',
+    },
+    productoD: {
+        icon: 'fa-circle-info',
+        text: 'Producto: Son las características del producto de software que afectan el costo de desarrollo, como la complejidad, el tamaño del software, y las características de rendimiento.',
+    },
+    plataformaD: {
+        icon: 'fa-circle-info',
+        text: 'Plataforma: Examina las restricciones y requisitos del hardware en el que el software será ejecutado. Esto incluye la velocidad del hardware y la memoria disponible.',
+    },
+    personalD: {
+        icon: 'fa-circle-info',
+        text: 'Personal: Considera las características del equipo de desarrollo, como la experiencia y habilidades de los programadores y analistas.',
+    },
+    proyectoD: {
+        icon: 'fa-circle-info',
+        text: 'Proyecto: Se refiere a las características del proyecto de software, como el entorno de desarrollo, la disponibilidad de herramientas y la experiencia en el dominio del proyecto.',
+    },
+    modo: {
+        icon: 'fa-circle-info',
+        text: 'Considera 3 modos como el <strong>Orgánico</strong> para proyectos de software pequeños y sencillos; <strong>Moderado</strong> para proyectos de software intermedios y el <strong>Embebido</strong> para proyectos complejos.',
+    },
+    lineascodigo: {
+        icon: 'fa-circle-info',
+        text: 'Se considera a partir de las 1000 (K) las lineas de codigo. (KLDC)',
+    },
+    puntosfuncion: {
+        icon: 'fa-circle-info',
+        text: 'Otra forma de entrada ademas de Lineas de Codigo, se tiene en cuenta los Puntos de Función Sin Ajustar (PFSA) y el Factor de Conversión.',
+    },
+    factorConversion: {
+        icon: 'fa-circle-info',
+        text: 'Oprimir el boton de color rojo con etiqueta de "Factor" para seleccionar uno de los valores adecuados.',
+    },
+    lineascodigoequivalente: {
+        icon: 'fa-circle-info',
+        text: 'Equivalencia resultante de multiplicar Puntos de Función Sin Ajustar y Factor de Conversión.',
+    },
+};
+
+
+const notifications = document.querySelector(".notifications"),
+labels = document.querySelectorAll(".lbl, h3, h4");
+
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if(toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+    setTimeout(() => toast.remove(), 500); // Removing the toast after 500ms
+}
+
+const createToast = (id) => {
+    // Getting the icon and text for the toast based on the id passed
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+    toast.className = `toast ${id}`; // Setting the classes for the toast
+    // Setting the inner HTML for the toast
+    toast.innerHTML = `<div class="column">
+                         <i class="fa-solid ${icon}"></i>
+                         <span>${text}</span>
+                      </div>
+                      <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast); // Append the toast to the notification ul
+    // Setting a timeout to remove the toast after the specified duration
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+}
+
+// Adding a click event listener to each label to create a toast when clicked
+labels.forEach(lbl => {
+    lbl.addEventListener("click", () => createToast(lbl.id));
+});
 
 
 

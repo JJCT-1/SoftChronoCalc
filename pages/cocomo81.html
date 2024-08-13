@@ -44,19 +44,19 @@
             <div class="configuracion-inicial">
                 <h3>Configuracion Inicial:</h3>
                 <div class="configuracion-form">
-                    <label for="modo">Modo:</label>
+                    <label class="lbl" id="modo">Modo:</label>
                     <select id="modo"  oninput="actualizarCalculos()">
                         <option value="1">Orgánico</option>
                         <option value="2">Semidestinado</option>
                         <option value="3">Embebido</option>
                     </select>
-                    <label for="lineas-codigo">Líneas de Código:</label>
+                    <label class="lbl" id="lineascodigo">Líneas de Código:</label>
                     <input type="number" id="lineas-codigo" value="0" min="0" step="0.01" oninput="actualizarCalculos()"/>
-                    <label for="puntos-funcion">Puntos de Función:</label>
+                    <label class="lbl" id="puntosfuncion">Puntos de Función:</label>
                     <input type="number" id="puntos-funcion" value="0" min="0" step="0" oninput="actualizarCalculos()"/>
-                    <label for="factor-conversion">Factor de Conversión:</label>
+                    <label class="lbl" id="factorConversion">Factor de Conversión:</label>
                     <input type="number" id="factor-conversion" value="0" min="0" step="0" oninput="actualizarCalculos()"/>
-                    <label for="lineas-codigo-equivalente">Líneas de Código (equivalente):</label>
+                    <label class="lbl" id="lineascodigoequivalente">Líneas de Código (equivalente):</label>
                     <input type="number" id="lineas-codigo-equivalente" value="0" min="0" step="0" oninput="actualizarCalculos()"/>
                 </div>
                 <div class="botones">
@@ -159,15 +159,15 @@
                 </tbody>
             </table>
         </section>
-
+        <ul class="notifications"></ul>
         <section class="part2">
             <div class="conductores-costes">
-                <h3>Conductores de Costes:</h3>
+                <h3 id="headerCostes">Conductores de Costes:</h3>
                 <div class="costes">
                     <div class="coste">
-                        <h4>Producto:</h4>
+                        <h4 id="productoD">Producto:</h4>
                         <div class="coste-item">
-                            <label for="rss">RSS:</label>
+                            <label class="lbl" id="rss">RSS:</label>
                             <select id="rss" oninput="actualizarCalculos()">
                                 <option value="0.75">Muy Bajo</option>
                                 <option value="0.88">Bajo</option>
@@ -177,7 +177,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="tbd">TBD:</label>
+                            <label class="lbl" id="tbd">TBD:</label>
                             <select id="tbd" oninput="actualizarCalculos()">
                                 <option value="0.94">Bajo</option>
                                 <option value="1" selected>Nominal</option>
@@ -186,7 +186,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="cpr">CPR:</label>
+                            <label class="lbl" id="cpr">CPR:</label>
                             <select id="cpr" oninput="actualizarCalculos()">
                                 <option value="0.70">Muy Bajo</option>
                                 <option value="0.85">Bajo</option>
@@ -198,9 +198,9 @@
                         </div>
                     </div>
                     <div class="coste">
-                        <h4>Plataforma:</h4>
+                        <h4 id="plataformaD">Plataforma:</h4>
                         <div class="coste-item">
-                            <label for="rte">RTE:</label>
+                            <label class="lbl" id="rte">RTE:</label>
                             <select id="rte" oninput="actualizarCalculos()">
                                 <option value="1" selected>Nominal</option>
                                 <option value="1.11">Alto</option>
@@ -209,7 +209,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="rmp">RMP:</label>
+                            <label class="lbl" id="rmp">RMP:</label>
                             <select id="rmp" oninput="actualizarCalculos()">
                                 <option value="1" selected>Nominal</option>
                                 <option value="1.06">Alto</option>
@@ -218,7 +218,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="vmc">VMC:</label>
+                            <label class="lbl" id="vmc">VMC:</label>
                             <select id="vmc" oninput="actualizarCalculos()">
                                 <option value="0.87">Bajo</option>
                                 <option value="1" selected>Nominal</option>
@@ -227,7 +227,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="trc">TRC:</label>
+                            <label class="lbl" id="trc">TRC:</label>
                             <select id="trc" oninput="actualizarCalculos()">
                                 <option value="0.87">Bajo</option>
                                 <option value="1" selected>Nominal</option>
@@ -237,9 +237,9 @@
                         </div>
                     </div>
                     <div class="coste">
-                        <h4>Personal:</h4>
+                        <h4 id="personalD">Personal:</h4>
                         <div class="coste-item">
-                            <label for="can">CAN:</label>
+                            <label class="lbl" id="can">CAN:</label>
                             <select id="can" oninput="actualizarCalculos()">
                                 <option value="1.46">Muy Bajo</option>
                                 <option value="1.19">Bajo</option>
@@ -249,7 +249,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="ean">EAN:</label>
+                            <label class="lbl" id="ean">EAN:</label>
                             <select id="ean" oninput="actualizarCalculos()">
                                 <option value="1.29">Muy Bajo</option>
                                 <option value="1.13">Bajo</option>
@@ -259,7 +259,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="cpro">CPRO:</label>
+                            <label class="lbl" id="cpro">CPRO:</label>
                             <select id="cpro" oninput="actualizarCalculos()">
                                 <option value="1.42">Muy Bajo</option>
                                 <option value="1.17">Bajo</option>
@@ -269,7 +269,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="eso">ESO:</label>
+                            <label class="lbl" id="eso">ESO:</label>
                             <select id="eso" oninput="actualizarCalculos()">
                                 <option value="1.21">Muy Bajo</option>
                                 <option value="1.12">Bajo</option>
@@ -278,7 +278,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="elp">ELP:</label>
+                            <label class="lbl" id="elp">ELP:</label>
                             <select id="elp" oninput="actualizarCalculos()">
                                 <option value="1.14">Muy Bajo</option>
                                 <option value="1.10">Bajo</option>
@@ -288,9 +288,9 @@
                         </div>
                     </div>
                     <div class="coste">
-                        <h4>Proyecto:</h4>
+                        <h4 id="proyectoD">Proyecto:</h4>
                         <div class="coste-item">
-                            <label for="utp">UTP:</label>
+                            <label class="lbl" id="utp">UTP:</label>
                             <select id="utp" oninput="actualizarCalculos()">
                                 <option value="1.24">Muy Bajo</option>
                                 <option value="1.10">Bajo</option>
@@ -300,7 +300,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="uhs">UHS:</label>
+                            <label class="lbl" id="uhs">UHS:</label>
                             <select id="uhs" oninput="actualizarCalculos()">
                                 <option value="1.24">Muy Bajo</option>
                                 <option value="1.10">Bajo</option>
@@ -311,7 +311,7 @@
                             </select>
                         </div>
                         <div class="coste-item">
-                            <label for="rpl">RPL:</label>
+                            <label class="lbl" id="rpl">RPL:</label>
                             <select id="rpl" oninput="actualizarCalculos()">
                                 <option value="1.23">Muy Bajo</option>
                                 <option value="1.08">Bajo</option>
