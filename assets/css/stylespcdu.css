@@ -222,8 +222,15 @@ main {
 
 
 
-
-
+/* Estilo para inputs deshabilitados */
+input[type="number"]:disabled {
+    background-color: #dddddd; /* Color de fondo más claro para indicar deshabilitado */
+    color: #212121; /* Color del texto para que sea más visible */
+    font-weight: bold; /* Texto en negrita */
+    border: 2px solid #807f7f; /* Borde más tenue */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede interactuar */
+    opacity: 0.7; /* Hace el campo más opaco */
+}
 
 
 .resultados {
@@ -359,19 +366,7 @@ main {
 }
 
 
-/* Estilos para el input habilitado */
-.configuracion .configuracion-form input:enabled {
-    background-color: #fff; /* Fondo blanco */
-    color: #000; /* Texto negro */
-    border: 1px solid #000; /* Borde negro */
-}
 
-/* Estilos para el input deshabilitado */
-.configuracion .configuracion-form input:disabled {
-    background-color: #f0f0f0; /* Fondo gris claro */
-    color: #aaa; /* Texto gris */
-    border: 1px solid #ccc; /* Borde gris */
-}
 
 #modal {
     position: fixed; /* Asegura que el modal esté fijo en la pantalla */
@@ -474,3 +469,134 @@ main {
     transform: scale(0.98); /* Efecto de presionar */
 }
 
+
+
+
+
+
+
+
+
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4; /* Color de fondo suave */
+}
+
+:root {
+  --light: #ffffff;
+  --info: #3498DB;
+  --dark: #333;
+}
+
+/* Contenedor de notificaciones */
+.notifications {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+/* Estilos para los toasts y sus elementos */
+.notifications :where(.toast, .column) {
+  display: flex;
+  align-items: center;
+}
+
+.notifications .toast {
+    max-width: 450px; /* Aumenta el ancho máximo de la notificación */
+    width: auto; /* Permite que la notificación se ajuste al contenido */
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    border-radius: 4px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    background: var(--light);
+    justify-content: space-between;
+    animation: show_toast 0.3s ease forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+    word-wrap: break-word; /* Permite que las palabras largas se dividan */
+    word-break: break-word; /* Rompe las palabras largas para evitar desbordes */
+    white-space: normal; /* Permite que el texto se divida en varias líneas */
+  }
+
+/* Animaciones para mostrar y ocultar el toast */
+@keyframes show_toast {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.notifications .toast.hide {
+  animation: hide_toast 0.3s ease forwards;
+}
+
+@keyframes hide_toast {
+  0% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  80% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(calc(100% + 20px));
+  }
+}
+
+/* Barra de progreso en la parte inferior del toast */
+.toast::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  animation: progress 5s linear forwards;
+  background: var(--info);
+}
+
+@keyframes progress {
+  100% {
+    width: 0%;
+  }
+}
+
+/* Estilos para los íconos y textos dentro del toast */
+.toast .column i {
+  font-size: 1.75rem;
+  color: var(--info);
+}
+
+.toast .column span {
+  font-size: 1.07rem;
+  margin-left: 12px;
+  display: inline-block;
+  max-width: 400px; /* Asegura que el texto no desborde */
+}
+
+.toast i:last-child {
+  color: #aeb0d7;
+  cursor: pointer;
+}
+
+.toast i:last-child:hover {
+  color: var(--dark);
+}

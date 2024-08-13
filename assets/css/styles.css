@@ -322,6 +322,17 @@ main {
 }
 
 
+/* Espacio entre los divs y sombreado en los bordes */
+.configuracion-inicial > .configuracion {
+    margin-bottom: 20px; /* Espacio inferior entre cada div */
+    padding: 15px; /* Espacio interno dentro del div */
+    border-radius: 8px; /* Bordes redondeados para un efecto suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombreado en los bordes */
+    background-color: #ffffff; /* Color de fondo blanco para contraste */
+}
+  
+
+
 /* Estilos para el input habilitado */
 .configuracion .configuracion-form input:enabled {
     background-color: #fff; /* Fondo blanco */

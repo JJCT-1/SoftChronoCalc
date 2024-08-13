@@ -281,3 +281,64 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 
 });
+
+
+
+const toastDetails = {
+    timer: 5000,
+    pesoactores: {
+        icon: 'fa-circle-info',
+        text: 'Es la suma total de los factores que son asignados a los pesos de los actores representados en los casos de uso. <strong> Presionar el Boton "Pesos de Actores" de color Azul para realizar el calculo. </strong>',
+    },
+    pesocasodeuso: {
+        icon: 'fa-circle-info',
+        text: 'Puede realizarse de 2 formas como son cosiderando Transacciones o Clases analizadas en los casos de uso. <strong> Presionar el Boton "Pesos de Casos de Uso" de color Verde para realizar el calculo. </strong>  ',
+    },
+    pcusa: {
+        icon: 'fa-circle-info',
+        text: 'Peso de los Casos de Uso sin ajustar(PCUSA): Este cálculo se obtiene con la suma de PA y PCU',
+    },
+    fct: {
+        icon: 'fa-circle-info',
+        text: 'Nos referimos al Factor de Complejidad Tecnica (FCT).  <strong> Presionar el Boton "Factor de Complejidad Tecnica (FCT)" de color Naranja para realizar el calculo respectivo.</strong>',
+    },
+    fat: {
+        icon: 'fa-circle-info',
+        text: 'Nos referimos al Factor de Ambiente (FA). <strong> Presionar el Boton "Factor de Ambiente (FA)" de color Rojo para realizar el calculo respectivo.</strong> ',
+    },
+    pcua: {
+        icon: 'fa-circle-info',
+        text: 'Este es el calculo de los Puntos de Caso de Uso Ajustados (PCUA): Se obtiene de multiplicar PCUSA por FCT por FA. ',
+    }
+
+};
+
+const notifications = document.querySelector(".notifications"),
+labels = document.querySelectorAll(".lbl, h3, h4");
+
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if(toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+    setTimeout(() => toast.remove(), 500); // Removing the toast after 500ms
+}
+
+const createToast = (id) => {
+    // Getting the icon and text for the toast based on the id passed
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+    toast.className = `toast ${id}`; // Setting the classes for the toast
+    // Setting the inner HTML for the toast
+    toast.innerHTML = `<div class="column">
+                         <i class="fa-solid ${icon}"></i>
+                         <span>${text}</span>
+                      </div>
+                      <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast); // Append the toast to the notification ul
+    // Setting a timeout to remove the toast after the specified duration
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+}
+
+// Adding a click event listener to each label to create a toast when clicked
+labels.forEach(lbl => {
+    lbl.addEventListener("click", () => createToast(lbl.id));
+});

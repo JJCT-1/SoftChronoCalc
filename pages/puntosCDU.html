@@ -31,7 +31,7 @@
                 <i class="fas fa-solid fa-arrows-to-dot"></i>
                 <span class="nav-item"></span>Puntos de Casos de Uso
                 </a></li>
-            <li><a href="#" class="ayuda">
+            <li><a href="../pages/ayuda.html" class="ayuda">
                 <i class="fas fa-regular fa-circle-question"></i>
                 <span class="nav-item"></span>Ayuda
                 </a></li>
@@ -39,23 +39,24 @@
         </ul>
     </nav>
     <main>
+        <ul class="notifications"></ul>
         <section class="configuracion">
             <h2>Puntos de Caso de Uso:</h2>
             <div class="configuracion-inicial">
                 <h3>Configuracion Inicial:</h3>
                 <div class="configuracion-form">
-                    <label for="peso-actores">Peso de Actores:</label>
-                    <input type="number" id="peso-actores" value="0" min="0" step="0.01" oninput="calpuntosPA()"/>
-                    <label for="peso-caso-de-uso">Peso de CU:</label>
-                    <input type="number" id="peso-caso-de-uso" value="0" min="0" step="0.01" oninput="calpuntosPCU()"/>
-                    <label for="pcusa">PCUSA:</label>
-                    <input type="number" id="pcusa" value="0" min="0" step="0.01" oninput="calPCUSA()"/>
-                    <label for="fct">FCT:</label>
-                    <input type="number" id="fct" value="0" min="0" step="0.01" oninput="calpuntosFCT()"/>
-                    <label for="fa">FA:</label>
-                    <input type="number" id="fa" value="0" min="0" step="0.01" oninput="calFA()"/>
-                    <label for="pcua">PCUA:</label>
-                    <input type="number" id="pcua" value="0" min="0" step="0.01" oninput="calcularPCUA()"/>
+                    <label class="lbl" id="pesoactores">Peso de Actores:</label>
+                    <input type="number" id="peso-actores" value="0" min="0" step="0.01" oninput="calpuntosPA()" disabled/>
+                    <label class="lbl" id="pesocasodeuso">Peso de CU:</label>
+                    <input type="number" id="peso-caso-de-uso" value="0" min="0" step="0.01" oninput="calpuntosPCU()" disabled/>
+                    <label class="lbl" id="pcusa">PCUSA:</label>
+                    <input type="number" id="pcusa" value="0" min="0" step="0.01" oninput="calPCUSA()" disabled/>
+                    <label class="lbl" id="fct">FCT:</label>
+                    <input type="number" id="fct" value="0" min="0" step="0.01" oninput="calpuntosFCT()" disabled/>
+                    <label class="lbl" id="fat">FA:</label>
+                    <input type="number" id="fa" value="0" min="0" step="0.01" oninput="calFA()" disabled/>
+                    <label class="lbl" id="pcua">PCUA:</label>
+                    <input type="number" id="pcua" value="0" min="0" step="0.01" oninput="calcularPCUA()" disabled/>
                 </div>
                 <div class="botones">
                     <button id="pesosdeactores">Pesos de Actores</button>
